@@ -1,3 +1,4 @@
 # Learning Git
-Git-2
-Changes made by Denys
+  Git - 2
+Hello
+It's me
