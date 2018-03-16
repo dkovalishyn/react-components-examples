@@ -14,12 +14,11 @@ cache:
   paths:
   - node_modules/
 
-before_script:  - npm install
+before_script: 
+  - npm install
 
 build:
-  script:  - npm run build
-  only:
-    - branches@jsmp
+  script: "npm run build"
   
 test:
-  script:  - npm run test
+  script: "npm run test"
