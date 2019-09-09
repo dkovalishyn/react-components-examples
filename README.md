@@ -13,3 +13,6 @@
 
 `npm start` - start server 
 
+###React components lecture
+`git checkout react-components-lecture`
+
