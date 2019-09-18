@@ -1,23 +1,9 @@
 import React from "react";
-import Link from "./components/Link";
-import logo from "./logo.svg";
+import AddStudentForm from './components/AddStudentForm';
 import "./App.css";
 
 function App() {
-  return (
-    <div className="app">
-      <header className="app-header">
-        <img src={logo} className="app-logo" alt="logo" />
-        <p>
-          Edit <code>src/app.js</code> and save to reload.
-        </p>
-        <nav>
-          <Link to="https://reactjs.org">Learn React</Link>
-          <Link to="https://reacttraining.com/react-router/web/guides/quick-start">Learn React-Router</Link>
-        </nav>
-      </header>
-    </div>
-  );
+  return <AddStudentForm />;
 }
 
 export default App;
