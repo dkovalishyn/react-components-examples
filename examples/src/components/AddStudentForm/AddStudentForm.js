@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+import StudentsList from "../StudentsList";
 
 const FORM_KEY = "AddStudentForm";
 
@@ -7,10 +7,17 @@ class AddStudentForm extends Component {
   constructor(props) {
     super(props);
 
-    this.state = AddStudentForm.deserializeValues();
+    this.state = {
+      formValues: {
+        name: "",
+        ...JSON.parse(localStorage.getItem(FORM_KEY))
+      },
+      students: []
+    };
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
+    clearTimeout(this.saveTimer);
     this.saveTimer = setTimeout(this.serializeValues, 2000);
   }
 
@@ -18,39 +25,43 @@ class AddStudentForm extends Component {
     clearTimeout(this.saveTimer);
   }
 
-  static deserializeValues = () => {
-    const storedValues = JSON.parse(localStorage.getItem(FORM_KEY));
-
-    return (
-      storedValues || {
-        name: 0
-      }
-    );
-  };
-
   serializeValues = () => {
     localStorage.setItem(FORM_KEY, JSON.stringify(this.state));
-    alert('Values saved!');
+    console.log("Values saved!");
   };
 
   setName = ({ target: { value } }) => {
-    this.setState({ name: value });
+    this.setState(({ formValues }) => ({
+      formValues: { ...formValues, name: value }
+    }));
   };
 
-  handleSubmit = () => alert(this.state.name);
+  handleSubmit = e => {
+    e.preventDefault();
+    this.setState(({ students, formValues }) => ({
+      students: [...students, { ...formValues }],
+      formValues: {
+        name: ""
+      }
+    }));
+  };
 
   render() {
+    const {
+      students,
+      formValues: { name }
+    } = this.state;
+
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input type="text" onChange={this.setName} value={this.state.name} />
-        <button>Сохранить</button>
-      </form>
+      <>
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" onChange={this.setName} value={name} />
+          <button>Сохранить</button>
+        </form>
+        <StudentsList students={students} />
+      </>
     );
   }
 }
-
-AddStudentForm.propTypes = {};
-
-AddStudentForm.defaultProps = {};
 
 export default AddStudentForm;
