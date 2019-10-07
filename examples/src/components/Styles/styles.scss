@@ -1,0 +1,43 @@
+.styles {
+  aside {
+    background-color: #263852;
+    display: inline-block;
+    vertical-align: top;
+    width: 20%;
+    margin: 24px;
+
+    nav {
+      li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        a {
+          display: block;
+          line-height: 36px;
+          padding: 0 16px;
+          text-decoration: none;
+          color: white;
+
+          &.active,
+          &:hover,
+          &:visited,
+          &:focus {
+            background-color: black;
+          }
+        }
+      }
+    }
+  }
+
+  main {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(80% - 48px);
+    padding: 24px;
+  }
+}
+
+.styles aside nav li {
+  list-style: none;
+}

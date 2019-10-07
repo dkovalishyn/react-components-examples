@@ -1,22 +1,44 @@
 import React from "react";
-import Link from "./components/Link";
-import logo from "./logo.svg";
+import { BrowserRouter as Router, Switch, Route, NavLink } from "react-router-dom";
+import TimeViewer from "./components/TimeViewer/TimeViewer";
+import Posts from "./components/Posts";
+import Styles from "./components/Styles";
+import RenderProps from "./components/RenderProps";
+import AddStudentForm from './components/StudentsList/AddStudentForm';
 import "./App.css";
 
 function App() {
   return (
-    <div className="app">
-      <header className="app-header">
-        <img src={logo} className="app-logo" alt="logo" />
-        <p>
-          Edit <code>src/app.js</code> and save to reload.
-        </p>
-        <nav>
-          <Link to="https://reactjs.org">Learn React</Link>
-          <Link to="https://reacttraining.com/react-router/web/guides/quick-start">Learn React-Router</Link>
-        </nav>
-      </header>
-    </div>
+    <Router>
+      <>
+        <header>
+          <nav>
+            <li>
+              <NavLink to="/time-viewer">Time viewer</NavLink>
+            </li>
+            <li>
+              <NavLink to="/students-list">Students list</NavLink>
+            </li>
+            <li>
+              <NavLink to="/posts">Posts</NavLink>
+            </li>
+            <li>
+              <NavLink to="/render-props">Render props</NavLink>
+            </li>
+            <li>
+              <NavLink to="/styles">Styles</NavLink>
+            </li>
+          </nav>
+        </header>
+        <Switch>
+          <Route path="/time-viewer" component={TimeViewer} />
+          <Route path="/students" component={AddStudentForm} />
+          <Route path="/posts" component={Posts} />
+          <Route path="/render-props" component={RenderProps} />
+          <Route path="/styles" component={Styles} />
+        </Switch>
+      </>
+    </Router>
   );
 }
 
