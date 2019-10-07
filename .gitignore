@@ -9,24 +9,7 @@ tmp/**
 css/reveal.min.css
 js/reveal.min.js
 
-node_modules/
-examples/node_modules/
-
 out/
-.idea/inspectionProfiles/
-.idea/sonarlint/
-reveal.js/.idea/
-
-examples/docs/.idea/.gitignore
-examples/docs/.idea/misc.xml
-examples/docs/.idea/modules.xml
-examples/docs/.idea/vcs.xml
-examples/.idea/$CACHE_FILE$
-examples/.idea/.gitignore
-examples/.idea/inspectionProfiles/
-examples/.idea/misc.xml
-examples/.idea/modules.xml
-examples/.idea/vcs.xml
-examples/examples/.idea/$CACHE_FILE$
-examples/examples/.idea/.gitignore
-examples/examples/.idea/misc.xml
+examples/build/*
+*/.idea/
+*/node_modules/
